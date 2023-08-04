@@ -1,3 +1,20 @@
 nvim/plugin/packer_compiled.lua
 tmux/*.log
+.gsd-keyboard.settings-ported
+chromium/
+dconf/
+enchant/
+evolution/
+gedit/
+gh/
+gnome-initial-setup-done
+gtk-3.0/
+ibus/
+mimeapps.list
+nautilus/
+neofetch/
+nvim/plugin/
+pulse/
+user-dirs.dirs
+user-dirs.locale
 
