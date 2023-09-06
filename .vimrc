@@ -47,3 +47,6 @@ vnoremap <leader>d "_d
 
 "--undotree
 nnoremap <leader>u :UndotreeToggle<CR>
+
+"--undotree
+nnoremap <leader>gs :Gs<CR>
