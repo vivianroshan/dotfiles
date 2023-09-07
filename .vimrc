@@ -1,8 +1,12 @@
 
 set nocompatible
+
 set nu rnu
 set tabstop=4
 set shiftwidth=4
+syntax on
+set laststatus=2
+colorscheme slate
 source /usr/share/vim/vim90/defaults.vim
 
 let mapleader=" "
@@ -47,6 +51,14 @@ vnoremap <leader>d "_d
 
 "--undotree
 nnoremap <leader>u :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 3
+"--persistent_undo
+let target_path = expand('~/.vim/undodir')
+if !isdirectory(target_path)
+	call mkdir(target_path, "p", 0700)
+endif
+let &undodir=target_path
+set undofile
 
-"--undotree
+"--fugitive
 nnoremap <leader>gs :Gs<CR>
