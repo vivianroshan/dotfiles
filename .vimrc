@@ -61,4 +61,5 @@ let &undodir=target_path
 set undofile
 
 "--fugitive
-nnoremap <leader>gs :Gs<CR>
+nnoremap <leader>gs :Git<CR>
+
