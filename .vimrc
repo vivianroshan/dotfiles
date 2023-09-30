@@ -5,9 +5,11 @@ set nu rnu
 set tabstop=4
 set shiftwidth=4
 syntax on
+set foldmethod=syntax
+set nofoldenable
 set laststatus=2
 colorscheme slate
-source /usr/share/vim/vim90/defaults.vim
+source /usr/share/vim/**/defaults.vim
 
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
@@ -35,16 +37,16 @@ nnoremap <leader>x :!chmod +x %<cr>
 nnoremap <leader><leader> :source %<CR>
 
 "--clipboard copy and paste
-vnoremap <leader>y "+y
+vnoremap <leader>y <ESC>gv"+y
 nnoremap <leader>y "+y
 
 nnoremap <leader>Y "+Y
 
 nnoremap <leader>p "+p
-vnoremap <leader>p "+p
+vnoremap <leader>p <ESC>gv"+p
 
 nnoremap <leader>P "+P
-vnoremap <leader>p "_dP
+vnoremap <leader>p <ESC>gv"_dP
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
