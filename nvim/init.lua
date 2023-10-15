@@ -1,2 +1,1 @@
-require("roshan.core")
-require("roshan.lazy")
+require("ghost")
