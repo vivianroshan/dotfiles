@@ -1,8 +1,8 @@
-return{
+return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-        {'nvim-treesitter/playground', lazy = true },
-        {'nvim-treesitter/nvim-treesitter-context', lazy = true },
+        { 'nvim-treesitter/playground' },
+        { 'nvim-treesitter/nvim-treesitter-context' },
     },
     event = { "BufReadPost" },
     build = ':TSUpdate',
@@ -30,4 +30,3 @@ return{
         }
     },
 }
-

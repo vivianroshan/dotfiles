@@ -25,8 +25,8 @@ vim.keymap.set("n", "<leader><C-s>", function()
 end)
 
 --clipboard copy and paste
-vim.keymap.set( "n", "<leader>y", [["+y]])
-vim.keymap.set( "v", "<leader>y", [[<Esc>gv"+y]])
+vim.keymap.set("n", "<leader>y", [["+y]])
+vim.keymap.set("v", "<leader>y", [[<Esc>gv"+y]])
 
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -37,4 +37,3 @@ vim.keymap.set("n", "<leader>P", [["+P]])
 vim.keymap.set("v", "<leader>P", [[<Esc>gv"+P]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-

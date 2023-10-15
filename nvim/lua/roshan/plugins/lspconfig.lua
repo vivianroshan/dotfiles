@@ -20,7 +20,6 @@ return {
         },
     },
     config = function()
-
         Servers = { 'clangd', 'rust_analyzer', 'pylsp', 'tsserver', 'lua_ls' }
 
         local function lsp_setup()

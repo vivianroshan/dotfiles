@@ -11,5 +11,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-return require('lazy').setup('roshan.plugins');
-
+return require('lazy').setup {
+    { import = 'roshan.plugins' },
+    {
+        'mbbill/undotree',
+        keys = {
+            { '<leader>u', function() vim.cmd.UndotreeToggle(); end, mode = 'n' },
+        },
+    },
+    {
+        'airblade/vim-gitgutter',
+        event = { "BufReadPost" },
+    },
+    {
+        'tpope/vim-fugitive',
+        keys = {
+            { '<leader>gs', function() vim.cmd.Git(); end, mode = 'n' },
+        },
+    },
+}
