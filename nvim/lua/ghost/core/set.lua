@@ -16,6 +16,9 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()";
 vim.opt.foldenable = false;
 vim.cmd.colorscheme("slate");
 
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+
 local target_path = vim.fn.expand('~/.vim/undodir')
 if vim.fn.isdirectory(target_path) == 0 then
     vim.fn.mkdir(target_path, "p", 0700)

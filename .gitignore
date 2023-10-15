@@ -1,10 +1,9 @@
 iterm2/
+/**/.DS_Store 
+/**/.luarc.json
 nvim/lazy-lock.json
 tmux/*.log
 .gsd-keyboard.settings-ported
-.vimrc.swn
-.vimrc.swo
-.vimrc.swp
 Code/
 cef_user_data/
 dconf/

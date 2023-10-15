@@ -1,30 +1,23 @@
 return {
-    'neovim/nvim-lspconfig',
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
     event = { "BufReadPost", "InsertEnter" },
     cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
     dependencies = {
+        'neovim/nvim-lspconfig',
         {
             'williamboman/mason.nvim',
             build = ':MasonUpdate',
             config = function() require('mason').setup() end,
         },
-        {
-            'hrsh7th/nvim-cmp',             -- Autocompletion plugin
-            dependencies = {
-                'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
-                'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-                'L3MON4D3/LuaSnip',         -- Snippets plugin
-            },
-            lazy = true,
- 
-
-       },
+        'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
+        'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+        'L3MON4D3/LuaSnip',         -- Snippets plugin
     },
     config = function()
-        Servers = { 'lua_ls', 'clangd', 'pylsp', 'tsserver' }
+        local servers = { 'lua_ls', 'clangd', 'pylsp', 'tsserver' }
 
+        local lspconfig = require 'lspconfig'
         local function lsp_setup()
-            local lspconfig = require('lspconfig')
             lspconfig.lua_ls.setup {}
             lspconfig.clangd.setup {}
             lspconfig.pylsp.setup {}
@@ -77,8 +70,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-            local lspconfig = require('lspconfig')
-            for _, lsp in ipairs(Servers) do
+            for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
                     -- on_attach = my_custom_on_attach,
                     capabilities = capabilities,
