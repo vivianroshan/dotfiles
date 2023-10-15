@@ -1,5 +1,3 @@
-
-
 vim.opt.number = true;
 vim.opt.relativenumber = true;
 vim.opt.tabstop = 4;
@@ -17,6 +15,13 @@ vim.opt.foldmethod = "expr";
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()";
 vim.opt.foldenable = false;
 vim.cmd.colorscheme("slate");
+
+local target_path = vim.fn.expand('~/.vim/undodir')
+if vim.fn.isdirectory(target_path) == 0 then
+    vim.fn.mkdir(target_path, "p", 0700)
+end
+vim.opt.undodir = target_path
+vim.opt.undofile = true
 
 --pwsh
 if vim.loop.os_uname().sysname == "Windows_NTX" then

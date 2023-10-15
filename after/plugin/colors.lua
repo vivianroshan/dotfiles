@@ -1,6 +1,7 @@
---require('catppuccin').setup({
---    disable_background = true
---})
+require('catppuccin').setup{}
+require('rose-pine').setup{}
+require('lualine').setup()
+
 function ColorScheme(color)
     color = color or 'catppuccin'
     vim.cmd.colorscheme(color)
@@ -29,4 +30,3 @@ vim.keymap.set("n", "<leader>c", function()
 end)
 
 
-require('lualine').setup()

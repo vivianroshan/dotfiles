@@ -1,1 +1,2 @@
-require("roshan")
+require("roshan.core")
+require("roshan.lazy")
