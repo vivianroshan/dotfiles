@@ -2,8 +2,8 @@
 set nocompatible
 
 set nu rnu
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 syntax on
 set foldmethod=syntax
 set nofoldenable
@@ -14,7 +14,7 @@ source /usr/share/vim/**/defaults.vim
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
 nnoremap <C-p> :find ./**/**<Left>
-nnoremap <C-s> :vim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <C-s> :lvim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -34,11 +34,11 @@ nnoremap <leader>k :lprev<CR>zz
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 nnoremap <leader>x :!chmod +x %<cr>
-nnoremap <leader><leader> :source %<CR>
+nnoremap <leader><C-s> :source %<CR>
 
 "--clipboard copy and paste
-vnoremap <leader>y <ESC>gv"+y
 nnoremap <leader>y "+y
+vnoremap <leader>y <ESC>gv"+y
 
 nnoremap <leader>Y "+Y
 

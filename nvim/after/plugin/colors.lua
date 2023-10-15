@@ -1,13 +1,32 @@
-require('catppuccin').setup({
-    disable_background = true
-})
-
-function ColorMyPencils(color)
-    color = color or "catppuccin"
+--require('catppuccin').setup({
+--    disable_background = true
+--})
+function ColorScheme(color)
+    color = color or 'catppuccin'
     vim.cmd.colorscheme(color)
-
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    Background = 0
 end
 
-ColorMyPencils()
+function ToggleBackground(color)
+    color = color or 'catppuccin'
+    vim.cmd.colorscheme(color)
+    if Background == 0 then
+        Background = 1
+    else
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+        Background = 0
+    end
+    print(Background)
+end
+
+ColorScheme()
+
+vim.keymap.set("n", "<leader>c", function()
+    ToggleBackground();
+end)
+
+
+require('lualine').setup()

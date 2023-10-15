@@ -1,3 +1,5 @@
+
+
 vim.opt.number = true;
 vim.opt.relativenumber = true;
 vim.opt.tabstop = 4;
@@ -8,16 +10,16 @@ vim.opt.smartindent = true;
 vim.opt.swapfile = false;
 vim.opt.backup = false;
 vim.opt.incsearch = true;
+--vim.opt.signcolumn = "yes";
 
 --fold
 vim.opt.foldmethod = "expr";
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()";
 vim.opt.foldenable = false;
+vim.cmd.colorscheme("slate");
 
-vim.opt.undofile = true;
-if vim.loop.os_uname().sysname == "Linux" then
-    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-elseif vim.loop.os_uname().sysname == "Windows_NTX" then
+--pwsh
+if vim.loop.os_uname().sysname == "Windows_NTX" then
     vim.opt.undodir      = os.getenv("HOMEPATH") .. "/.vim/undodir"
     vim.opt.shell        = "pwsh";
     vim.opt.shellcmdflag =
