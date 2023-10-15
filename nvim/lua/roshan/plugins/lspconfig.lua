@@ -5,9 +5,8 @@ return {
     dependencies = {
         {
             'williamboman/mason.nvim',
-            cmd = 'Mason',
             build = ':MasonUpdate',
-            config = function() require('mason').setup() end
+            config = function() require('mason').setup() end,
         },
         {
             'hrsh7th/nvim-cmp',             -- Autocompletion plugin
@@ -16,24 +15,20 @@ return {
                 'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
                 'L3MON4D3/LuaSnip',         -- Snippets plugin
             },
-            lazy = true
-        },
+            lazy = true,
+ 
+
+       },
     },
     config = function()
-        Servers = { 'clangd', 'rust_analyzer', 'pylsp', 'tsserver', 'lua_ls' }
+        Servers = { 'lua_ls', 'clangd', 'pylsp', 'tsserver' }
 
         local function lsp_setup()
             local lspconfig = require('lspconfig')
+            lspconfig.lua_ls.setup {}
             lspconfig.clangd.setup {}
             lspconfig.pylsp.setup {}
             lspconfig.tsserver.setup {}
-            lspconfig.lua_ls.setup {}
-            lspconfig.rust_analyzer.setup {
-                -- Server-specific settings. See `:help lspconfig-setup`
-                settings = {
-                    ['rust-analyzer'] = {},
-                },
-            }
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
