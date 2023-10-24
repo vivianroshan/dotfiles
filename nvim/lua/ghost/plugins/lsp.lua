@@ -14,13 +14,20 @@ return {
         'L3MON4D3/LuaSnip',         -- Snippets plugin
     },
     config = function()
-        local servers = { 'lua_ls', 'clangd', 'pylsp', 'tsserver' }
+        local servers = {
+            'lua_ls',
+            'clangd',
+            'pylsp',
+            'pyright',
+            'tsserver'
+        }
 
         local lspconfig = require 'lspconfig'
         local function lsp_setup()
             lspconfig.lua_ls.setup {}
             lspconfig.clangd.setup {}
             lspconfig.pylsp.setup {}
+            lspconfig.pyright.setup {}
             lspconfig.tsserver.setup {}
 
             -- Global mappings.

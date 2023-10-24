@@ -17,9 +17,8 @@ return {
             Background = 0
         end
 
-        function ToggleBackground(color)
-            color = color or 'catppuccin'
-            vim.cmd.colorscheme(color)
+        function ToggleBackground()
+            vim.cmd.colorscheme(vim.g.colors_name)
             if Background == 0 then
                 Background = 1
             else

@@ -14,7 +14,7 @@ vim.opt.incsearch = true;
 vim.opt.foldmethod = "expr";
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()";
 vim.opt.foldenable = false;
-vim.cmd.colorscheme("slate");
+--vim.cmd.colorscheme("slate");
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
@@ -36,4 +36,8 @@ if vim.loop.os_uname().sysname == "Windows_NTX" then
     vim.opt.shellpipe    = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
     vim.opt.shellquote   = "";
     vim.opt.shellxquote  = "";
+end
+
+function PythonTraceback()
+    vim.opt.errorformat = [[\ \ File\ \"%f\"\\\,\ line\ %l\\\,%m]]
 end

@@ -37,3 +37,7 @@ vim.keymap.set("n", "<leader>P", [["+P]])
 vim.keymap.set("v", "<leader>P", [[<Esc>gv"+P]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+vim.keymap.set("n", "<leader>pt", function()
+  PythonTraceback()
+end)
