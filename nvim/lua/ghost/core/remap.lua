@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader><C-p>", [[:find ./**/**<Left>]])
-vim.keymap.set("n", "<C-s>", [[:lvim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]])
+vim.keymap.set("n", "<C-s>", [[:lvim//g ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>]])
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -39,5 +39,32 @@ vim.keymap.set("v", "<leader>P", [[<Esc>gv"+P]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "<leader>pt", function()
-  PythonTraceback()
+    PythonTraceback()
 end)
+vim.keymap.set("n", "<leader>c", function()
+    ToggleColorColumn()
+end)
+vim.keymap.set("n", "<leader>m", function()
+    vim.cmd("silent make")
+end)
+
+function ToggleQuickfix(list_type)
+    local qf_exists = false
+    local list_cmd = (list_type == "quickfix") and "c" or "l"
+    local list_data = (list_type == "quickfix") and vim.fn.getqflist() or vim.fn.getloclist(0)
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win[list_type] == 1 then
+            qf_exists = true
+        end
+    end
+    if qf_exists == true then
+        vim.cmd(list_cmd .. "close")
+        return
+    end
+    if not vim.tbl_isempty(list_data) then
+        vim.cmd(list_cmd .. "window")
+    end
+end
+
+vim.keymap.set('n', '<Leader>qf', '<cmd>lua ToggleQuickfix("quickfix")<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>l', '<cmd>lua ToggleQuickfix("loclist")<CR>', { noremap = true, silent = true })

@@ -15,4 +15,27 @@ return {
             { '<leader>gs', function() vim.cmd.Git(); end, mode = 'n' },
         },
     },
+    {
+        "folke/todo-comments.nvim",
+        dependency = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+    },
+    {
+        "folke/zen-mode.nvim",
+        opts = {
+            window = {
+                backdrop = 0.8,
+            },
+            plugins = {
+                options = {
+                    enabled = true,
+                    ruler = true,
+                    showcmd = true,
+                    laststatus = 3,
+                },
+                gitsigns = { enabled = true },
+                tmux = { enabled = false },
+            },
+        },
+    },
 }
