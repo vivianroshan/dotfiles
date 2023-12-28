@@ -53,7 +53,7 @@ nnoremap <leader>p "+p
 vnoremap <leader>p <ESC>gv"+p
 
 nnoremap <leader>P "+P
-vnoremap <leader>p <ESC>gv"_dP
+vnoremap <leader>P <ESC>gv"_+P
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
