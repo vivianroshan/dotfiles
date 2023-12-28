@@ -4,14 +4,14 @@ return {
   cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
   dependencies = {
     'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
+    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+    'L3MON4D3/LuaSnip',         -- Snippets plugin
     {
       'williamboman/mason.nvim',
       build = ':MasonUpdate',
       config = function() require('mason').setup() end,
     },
-    'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
-    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-    'L3MON4D3/LuaSnip',         -- Snippets plugin
   },
   config = function()
     local servers = {
@@ -74,31 +74,22 @@ return {
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
           vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          --                    vim.keymap.set('n', '<leader>f', function()
-          --                        vim.lsp.buf.format { async = true }
-          --                    end, opts)
+          -- vim.keymap.set('n', '<leader>f', function()
+          --   vim.lsp.buf.format { async = true }
+          -- end, opts)
         end,
       })
     end
 
     local function nvimcmp_setup()
-      -- nvim-cmp setup
       local cmp = require 'cmp'
-
-      -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup {
-          -- on_attach = my_custom_on_attach,
           capabilities = capabilities,
         }
       end
-
-      -- luasnip setup
       local luasnip = require 'luasnip'
-
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -114,24 +105,6 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           },
-          --                    ['<Tab>'] = cmp.mapping(function(fallback)
-          --                        if cmp.visible() then
-          --                            cmp.select_next_item()
-          --                        elseif luasnip.expand_or_jumpable() then
-          --                            luasnip.expand_or_jump()
-          --                        else
-          --                            fallback()
-          --                        end
-          --                    end, { 'i', 's' }),
-          --                    ['<S-Tab>'] = cmp.mapping(function(fallback)
-          --                        if cmp.visible() then
-          --                            cmp.select_prev_item()
-          --                        elseif luasnip.jumpable(-1) then
-          --                            luasnip.jump(-1)
-          --                        else
-          --                            fallback()
-          --                        end
-          --                    end, { 'i', 's' }),
         }),
         sources = {
           { name = 'nvim_lsp' },

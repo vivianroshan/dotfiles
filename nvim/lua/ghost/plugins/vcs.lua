@@ -18,10 +18,12 @@ return {
     {
         "folke/todo-comments.nvim",
         dependency = { 'nvim-lua/plenary.nvim' },
+        event = { "BufReadPost" },
         opts = {},
     },
     {
         "folke/zen-mode.nvim",
+        cmd = 'ZenMode',
         opts = {
             window = {
                 backdrop = 0.8,
