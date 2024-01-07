@@ -1,4 +1,4 @@
-return {
+local cmp = {
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	dependencies = {
 		"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
@@ -33,3 +33,5 @@ return {
 		})
 	end,
 }
+
+return cmp

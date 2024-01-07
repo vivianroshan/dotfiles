@@ -1,4 +1,4 @@
-return {
+local colorizer = {
 	"NvChad/nvim-colorizer.lua",
 	event = { "BufReadPre" },
 	config = function()
@@ -31,3 +31,5 @@ return {
 		})
 	end,
 }
+
+return colorizer

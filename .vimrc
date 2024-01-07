@@ -80,9 +80,24 @@ set undofile
 set backupdir=$HOME/.vim/backupdir/
 set directory=$HOME/.vim/swapdir/
 
+function! GetGitDiffSummary()
+  let l:git_command = "git diff --numstat -- " . shellescape(expand('%'))
+
+  let l:adds = "+".trim(system(l:git_command . " | awk '{print($1)}'"))
+  let l:subs = "-".trim(system(l:git_command . " | awk '{print($2)}'"))
+
+  return l:adds."/".l:subs
+endfunction
+
+
 if has('nvim')
 else
   nnoremap <leader>u :UndotreeToggle<CR>
   nnoremap <leader>gs :Git<CR>
+  augroup UpdateDiffSummary
+    autocmd!
+    autocmd BufReadPost * let b:git_diff_summary = GetGitDiffSummary()
+    autocmd BufWritePost * let b:git_diff_summary = GetGitDiffSummary()
+  augroup END
+  set statusline=%{get(b:,'git_diff_summary')}\ %<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
 endif
-

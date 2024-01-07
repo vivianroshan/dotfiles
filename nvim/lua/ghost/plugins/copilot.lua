@@ -1,5 +1,6 @@
-return {
+local copilot = {
 	"github/copilot.vim",
+	event = { "BufReadPost", "InsertEnter" },
 	config = function()
 		vim.keymap.set("i", "<M-j>", "<Plug>(copilot-next)", {})
 		vim.keymap.set("i", "<M-k>", "<Plug>(copilot-previous)", {})
@@ -9,3 +10,5 @@ return {
 		--<M-\> <Plug>(copilot-suggest) is disabled.
 	end,
 }
+
+return copilot

@@ -1,4 +1,4 @@
-return {
+local lsp = {
 	"williamboman/mason-lspconfig.nvim",
 	event = { "BufReadPost", "InsertEnter" },
 	cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
@@ -83,3 +83,5 @@ return {
 		end
 	end,
 }
+
+return lsp

@@ -1,4 +1,4 @@
-return {
+local treesitter = {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
 		{ "nvim-treesitter/playground" },
@@ -23,3 +23,5 @@ return {
 		vim.opt.foldenable = false
 	end,
 }
+
+return treesitter
