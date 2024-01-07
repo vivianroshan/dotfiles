@@ -1,13 +1,13 @@
 set number
 set relativenumber
-set tabstop=4
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
-set noswapfile
-set nobackup
+"-- set noswapfile
+"-- set nobackup
 set incsearch
 set signcolumn=yes
 
@@ -60,17 +60,29 @@ vnoremap <leader>d "_d
 
 nnoremap <leader>m :silent make<CR>
 
+let g:undotree_WindowLayout = 3
+
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undodir")
+    call mkdir($HOME."/.vim/undodir", "", 0700)
+endif
+if !isdirectory($HOME."/.vim/backupdir")
+    call mkdir($HOME."/.vim/backupdir", "", 0700)
+endif
+if !isdirectory($HOME."/.vim/directory")
+    call mkdir($HOME."/.vim/directory", "", 0700)
+endif
+
+set undodir=$HOME/.vim/undodir/
+set undofile
+set backupdir=$HOME/.vim/backupdir/
+set directory=$HOME/.vim/swapdir/
+
 if has('nvim')
 else
-  "--undotree
   nnoremap <leader>u :UndotreeToggle<CR>
-  let g:undotree_WindowLayout = 3
-  "--persistent_undo
-  let target_path = expand('~/.vim/undodir')
-  if !isdirectory(target_path)
-      call mkdir(target_path, "p", 0700)
-  endif
-  "--fugitive
   nnoremap <leader>gs :Git<CR>
 endif
 

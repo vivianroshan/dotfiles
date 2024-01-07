@@ -21,23 +21,5 @@ return {
         event = { "BufReadPost" },
         opts = {},
     },
-    {
-        "folke/zen-mode.nvim",
-        cmd = 'ZenMode',
-        opts = {
-            window = {
-                backdrop = 0.8,
-            },
-            plugins = {
-                options = {
-                    enabled = true,
-                    ruler = true,
-                    showcmd = true,
-                    laststatus = 3,
-                },
-                gitsigns = { enabled = true },
-                tmux = { enabled = false },
-            },
-        },
-    },
 }
+
