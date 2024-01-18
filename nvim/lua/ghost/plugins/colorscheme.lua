@@ -1,6 +1,8 @@
 local colorscheme = {
-	{ "folke/tokyonight.nvim", name = "tokyonight-cs", lazy = true },
-	{ "projekt0n/github-nvim-theme", name = "github-cs", lazy = true },
+	{ "folke/tokyonight.nvim", name = "tokyonight-cs" },
+	{ "projekt0n/github-nvim-theme", name = "github-cs" },
+	{ "rose-pine/neovim", name = "rose-pine-cs" },
+	{ "catppuccin/nvim", name = "catppuccin-cs" },
 }
 local rose_pine = {
 	"rose-pine/neovim",
@@ -68,8 +70,7 @@ local rose_pine = {
 				-- end
 			end,
 		})
-
-		-- vim.cmd("colorscheme rose-pine")
+		vim.cmd("colorscheme rose-pine")
 		-- vim.cmd('colorscheme rose-pine-main')
 		-- vim.cmd('colorscheme rose-pine-moon')
 		-- vim.cmd('colorscheme rose-pine-dawn')
@@ -143,4 +144,5 @@ local lualine = {
 	end,
 }
 
-return { colorscheme, rose_pine, catppuccin, lualine }
+-- return { colorscheme, catppuccin, lualine }
+return { colorscheme, rose_pine, lualine }

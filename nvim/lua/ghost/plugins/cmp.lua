@@ -1,8 +1,15 @@
 local cmp = {
 	"hrsh7th/nvim-cmp", -- Autocompletion plugin
 	dependencies = {
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-path",
+		"hrsh7th/nvim-cmp",
+
 		"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		require("luasnip.loaders.from_vscode").lazy_load()
@@ -24,6 +31,7 @@ local cmp = {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 			}),
+
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
@@ -31,7 +39,26 @@ local cmp = {
 				{ name = "buffer" },
 			}),
 		})
+
+		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+
+		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
+		})
 	end,
+	func,
 }
 
 return cmp

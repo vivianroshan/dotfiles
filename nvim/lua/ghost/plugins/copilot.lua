@@ -6,8 +6,7 @@ local copilot = {
 		vim.keymap.set("i", "<M-k>", "<Plug>(copilot-previous)", {})
 		vim.keymap.set("i", "<M-l>", "<Plug>(copilot-accept-word)", {})
 		vim.keymap.set("i", "<M-L>", "<Plug>(copilot-accept-line)", {})
-		--<C-]> <Plug>(copilot-dismiss)
-		--<M-\> <Plug>(copilot-suggest) is disabled.
+		vim.keymap.set("i", "<M-]>", "<Plug>(copilot-dismiss)", {})
 	end,
 }
 

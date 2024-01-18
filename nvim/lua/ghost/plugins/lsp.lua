@@ -31,6 +31,12 @@ local lsp = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+            inlay_hints = {
+              enabled = true,
+--              show_type_hints = false,
+--              show_parameter_hints = false,
+--              show_parameter_name_hints = false,
+            },
 					})
 				end,
 				["grammarly"] = function()
@@ -38,7 +44,16 @@ local lsp = {
 						filetypes = { "markdown", "text", "tex" },
 					})
 				end,
+				["emmet_language_server"] = function()
+					lspconfig.emmet_ls.setup({
+						capabilities = capabilities,
+						showSuggestionsAsSnippets = true,
+					})
+				end,
 			},
+		})
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
 		})
 
 		-- Global mappings.
@@ -63,7 +78,7 @@ local lsp = {
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", "<leader><C-k>", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set({ "n", "i" }, "<C-l>", vim.lsp.buf.signature_help, opts)
 				vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 				vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 				vim.keymap.set("n", "<leader>wl", function()
