@@ -126,7 +126,6 @@ local catppuccin = {
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})
-		vim.cmd("colorscheme catppuccin")
 	end,
 }
 local lualine = {
@@ -145,4 +144,4 @@ local lualine = {
 }
 
 -- return { colorscheme, catppuccin, lualine }
-return { colorscheme, rose_pine, lualine }
+return { colorscheme,catppuccin, rose_pine, lualine }

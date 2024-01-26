@@ -44,12 +44,14 @@ local lsp = {
 						filetypes = { "markdown", "text", "tex" },
 					})
 				end,
-				["emmet_language_server"] = function()
-					lspconfig.emmet_ls.setup({
+				["emmet-language-server"] = function()
+					lspconfig.emmet_language_server.setup({
 						capabilities = capabilities,
 						showSuggestionsAsSnippets = true,
 					})
 				end,
+        ["jdtls"] = function()
+        end,
 			},
 		})
 		lspconfig.clangd.setup({
