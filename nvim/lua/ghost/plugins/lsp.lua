@@ -44,7 +44,7 @@ local lsp = {
 						filetypes = { "markdown", "text", "tex" },
 					})
 				end,
-				["emmet-language-server"] = function()
+				["emmet_language_server"] = function()
 					lspconfig.emmet_language_server.setup({
 						capabilities = capabilities,
 						showSuggestionsAsSnippets = true,
