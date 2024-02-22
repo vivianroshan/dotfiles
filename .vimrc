@@ -21,7 +21,7 @@ source /usr/share/vim/**/defaults.vim
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
 nnoremap <leader><C-p> :find ./**/**<Left>
-nnoremap <C-s> :lvim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <C-s> :vim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 
 nnoremap <C-j> :cnext<CR>zz
@@ -54,9 +54,6 @@ vnoremap <leader>p <ESC>gv"+p
 
 nnoremap <leader>P "+P
 vnoremap <leader>P <ESC>gv"_+P
-
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
 
 nnoremap <leader>m :silent make<CR>
 

@@ -17,6 +17,7 @@ local conform = {
 			javascript = { { "prettierd", "prettier" } },
 			tex = { "latexindent" },
 			lua = { "stylua" },
+      json = { { "prettierd", "prettier" } },
 		},
 	},
 }

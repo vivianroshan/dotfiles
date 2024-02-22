@@ -12,6 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	{ import = "ghost.plugins" },
-	"mfussenegger/nvim-jdtls"
+	spec = {
+		{ import = "ghost.plugins" },
+		"folke/which-key.nvim",
+	},
 })

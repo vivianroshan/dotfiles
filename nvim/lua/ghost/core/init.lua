@@ -62,3 +62,5 @@ vim.keymap.set("n", "<leader>pt", function() PythonTraceback() end)
 vim.keymap.set("n", "<leader>c", function() ToggleColorColumn() end)
 vim.keymap.set("n", '<leader>qf', function() ToggleQuickfix("quickfix") end, { silent = true })
 vim.keymap.set("n", '<leader>ql', function() ToggleQuickfix("loclist") end, { silent = true })
+ 
+require("ghost.core.icons")
