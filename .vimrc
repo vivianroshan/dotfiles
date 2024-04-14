@@ -11,7 +11,7 @@ set smartindent
 set incsearch
 set signcolumn=yes
 
-" fold
+"--fold
 syntax on
 set foldmethod=syntax
 set nofoldenable
