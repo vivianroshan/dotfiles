@@ -4,7 +4,7 @@ local nvim_jdtls = {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    function Attach_jdtls()
+    local function attach_jdtls()
       local jdtls = require("jdtls")
       local root_markers = { ".git", "mvnw", "gradlew" }
       local root_dir_folder = require("jdtls.setup").find_root(root_markers)
@@ -70,17 +70,17 @@ local nvim_jdtls = {
       --vim.lsp.codelens.refresh()
     end
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
-      --filetypes = { "java" },
-      pattern = { "*.java" },
-      callback = function()
-        Attach_jdtls()
-        --require("dap.ext.vscode").load_launchjs()
-        --require("jdtls.dap").setup_dap_main_class_configs()
-        --jdtls.dap.setup_dap_main_class_configs()
-      end,
-    })
-    --Attach_jdtls()
+    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+    -- filetypes = { "java" },
+    -- pattern = { "*.java" },
+    -- callback = function()
+    -- attach_jdtls()
+    -- require("dap.ext.vscode").load_launchjs()
+    -- require("jdtls.dap").setup_dap_main_class_configs()
+    -- jdtls.dap.setup_dap_main_class_configs()
+    -- end,
+    -- })
+    --attach_jdtls()
   end,
 }
 

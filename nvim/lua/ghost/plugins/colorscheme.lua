@@ -162,4 +162,5 @@ local lualine = {
 -- return { colorscheme, catppuccin, lualine }
 -- return { colorscheme,catppuccin, rose_pine, lualine }
 -- return { colorscheme, catppuccin, rose_pine }
-return { colorscheme, github_dark_tritanopia, catppuccin, rose_pine, lualine }
+-- return { colorscheme, github_dark_tritanopia, catppuccin, rose_pine, lualine }
+return { colorscheme, github_dark_tritanopia, catppuccin, rose_pine }
