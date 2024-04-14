@@ -21,4 +21,4 @@ local todo_comments = {
   opts = {},
 }
 
-return {undotree, gitgutter, vim_fugitive, todo_comments}
+return { undotree, gitgutter, vim_fugitive, todo_comments }

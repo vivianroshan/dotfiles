@@ -10,8 +10,9 @@ set smartindent
 "-- set nobackup
 set incsearch
 set signcolumn=yes
+set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
 
-" fold
+"--fold
 syntax on
 set foldmethod=syntax
 set nofoldenable
