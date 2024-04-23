@@ -17,13 +17,12 @@ syntax on
 set foldmethod=syntax
 set nofoldenable
 set laststatus=2
-colorscheme slate
 source /usr/share/vim/**/defaults.vim
+colorscheme slate
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
 nnoremap <leader><C-p> :find ./**/**<Left>
 nnoremap <C-s> :vim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-
 
 nnoremap <C-j> :cnext<CR>zz
 nnoremap <C-k> :cprev<CR>zz
@@ -80,13 +79,10 @@ set directory=$HOME/.vim/swapdir/
 
 function! GetGitDiffSummary()
   let l:git_command = "git diff --numstat -- " . shellescape(expand('%'))
-
   let l:adds = "+".trim(system(l:git_command . " | awk '{print($1)}'"))
   let l:subs = "-".trim(system(l:git_command . " | awk '{print($2)}'"))
-
   return l:adds."/".l:subs
 endfunction
-
 
 if has('nvim')
 else

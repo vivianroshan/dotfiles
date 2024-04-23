@@ -61,26 +61,26 @@ local nvim_jdtls = {
       }
       -- This starts a new client & server,
       -- or attaches to an existing client & server depending on the `root_dir`.
-      opts["on_attach"] = function()
-        require("jdtls").setup_dap()
-        require("jdtls.dap").setup_dap_main_class_configs()
-      end
-      jdtls.setup_dap({ hotcodereplace = "auto" })
+      --opts["on_attach"] = function()
+      --require("jdtls").setup_dap()
+      --require("jdtls.dap").setup_dap_main_class_configs()
+      --end
+      --jdtls.setup_dap({ hotcodereplace = "auto" })
       jdtls.start_or_attach(opts)
       --vim.lsp.codelens.refresh()
     end
 
-    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
-    -- filetypes = { "java" },
-    -- pattern = { "*.java" },
-    -- callback = function()
-    -- attach_jdtls()
-    -- require("dap.ext.vscode").load_launchjs()
-    -- require("jdtls.dap").setup_dap_main_class_configs()
-    -- jdtls.dap.setup_dap_main_class_configs()
-    -- end,
-    -- })
-    --attach_jdtls()
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+      --filetypes = { "java" },
+      pattern = { "*.java" },
+      callback = function()
+        attach_jdtls()
+        --require("dap.ext.vscode").load_launchjs()
+        --require("jdtls.dap").setup_dap_main_class_configs()
+        --jdtls.dap.setup_dap_main_class_configs()
+      end,
+    })
+    attach_jdtls()
   end,
 }
 

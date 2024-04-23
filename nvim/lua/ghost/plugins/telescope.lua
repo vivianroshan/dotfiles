@@ -36,6 +36,18 @@ local telescope = {
       desc = "grep_string",
     },
     {
+      "<leader>psW",
+      function() require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") }) end,
+      mode = "n",
+      desc = "grep_string",
+    },
+    {
+      "<leader>psw",
+      function() require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") }) end,
+      mode = "n",
+      desc = "grep_string",
+    },
+    {
       "<leader>pb",
       function() require("telescope.builtin").buffers() end,
       mode = "n",
