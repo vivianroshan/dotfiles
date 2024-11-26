@@ -21,7 +21,7 @@ local lsp = {
         "html",
         "cssls",
         "tailwindcss",
-        "tsserver",
+        "ts_ls",
         "gopls",
         "pyright",
         "rust_analyzer",

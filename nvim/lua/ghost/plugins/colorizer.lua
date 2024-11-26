@@ -36,4 +36,4 @@ local rainbow_csv = {
   "mechatroner/rainbow_csv",
 }
 
-return rainbow_csv, colorizer
+return { colorizer, rainbow_csv }
