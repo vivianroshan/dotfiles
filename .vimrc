@@ -17,13 +17,15 @@ syntax on
 set foldmethod=syntax
 set nofoldenable
 set laststatus=2
+
 "source /usr/share/vim/**/defaults.vim
 let skip_defaults_vim=0
+
 colorscheme slate
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
 nnoremap <leader><C-p> :find ./**/**<Left>
-nnoremap <C-s> :vim//g  ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <C-s> :vim//g ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 nnoremap <C-j> :cnext<CR>zz
 nnoremap <C-k> :cprev<CR>zz
@@ -32,7 +34,7 @@ nnoremap <leader>k :lprev<CR>zz
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 nnoremap <leader>x :!chmod +x %<cr>
-nnoremap <leader><C-s> :source %<CR>
+nnoremap <leader><C-x> :source %<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -89,8 +91,7 @@ function! GetGitDiffSummary()
   endif
 endfunction
 
-if has('nvim')
-else
+if !has('nvim')
   nnoremap <leader>u :UndotreeToggle<CR>
   nnoremap <leader>gs :Git<CR>
   augroup UpdateDiffSummary
@@ -101,4 +102,7 @@ else
   set statusline+=\ %{get(b:,'git_diff_summary')}
   set statusline+=\ %<%f
   set statusline+=\ %h%m%r
+  nnoremap <leader><C-s> :silent grep -ir '' .<Left><Left><Left>
+else
+  nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
 endif
