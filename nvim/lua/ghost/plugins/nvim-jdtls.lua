@@ -85,4 +85,4 @@ local nvim_jdtls = {
 }
 
 --return nvim_jdtls
-return { nvim_jdtls }
+return { }

@@ -17,7 +17,8 @@ syntax on
 set foldmethod=syntax
 set nofoldenable
 set laststatus=2
-source /usr/share/vim/**/defaults.vim
+"source /usr/share/vim/**/defaults.vim
+let skip_defaults_vim=0
 colorscheme slate
 let mapleader=" "
 nnoremap <leader>pv :Ex<CR>
@@ -78,10 +79,14 @@ set backupdir=$HOME/.vim/backupdir/
 set directory=$HOME/.vim/swapdir/
 
 function! GetGitDiffSummary()
-  let l:git_command = "git diff --numstat -- " . shellescape(expand('%'))
-  let l:adds = "+".trim(system(l:git_command . " | awk '{print($1)}'"))
-  let l:subs = "-".trim(system(l:git_command . " | awk '{print($2)}'"))
-  return l:adds."/".l:subs
+  let l:git_command = "git diff --numstat -- " . shellescape(expand('%')) . " 2>/dev/null"
+  let l:adds = trim(system(l:git_command . " | awk '{print($1)}'"))
+  let l:subs = trim(system(l:git_command . " | awk '{print($2)}'"))
+  if l:adds == "" || l:subs == ""
+    return "" 
+  else
+    return "+" . l:adds . " | " . "-" . l:subs . " >>"
+  endif
 endfunction
 
 if has('nvim')
@@ -93,5 +98,7 @@ else
     autocmd BufReadPost * let b:git_diff_summary = GetGitDiffSummary()
     autocmd BufWritePost * let b:git_diff_summary = GetGitDiffSummary()
   augroup END
-  set statusline=%{get(b:,'git_diff_summary')}\ %<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
+  set statusline+=\ %{get(b:,'git_diff_summary')}
+  set statusline+=\ %<%f
+  set statusline+=\ %h%m%r
 endif
