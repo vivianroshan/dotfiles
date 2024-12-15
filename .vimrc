@@ -107,8 +107,6 @@ else
   nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
 endif
 
-command! -nargs=? Journal call s:NewJournalEntry('<f-args>')
-
 function! s:Quickfix_loclist_win_status()
   let winid = win_getid()
   let wininfo = getwininfo()
@@ -121,7 +119,6 @@ function! s:Quickfix_loclist_win_status()
   return {'quickfix': l:quickfix, 'loclist': l:loclist}
 endfunction
 
-
 function! s:Toggle_quickfix_or_loclist(args1)
   let info = Quickfix_loclist_win_status()
   if (a:args1 == 'c' && info['quickfix'] == 0) || (a:args1 == 'l' && info['loclist'] == 0)
@@ -133,6 +130,16 @@ endfunction
 
 nnoremap <leader>qf :call Toggle_quickfix_or_loclist('c')<CR>
 nnoremap <leader>ql :call Toggle_quickfix_or_loclist('l')<CR>
+
+function! Toggle_color_column(arg1)
+  if &colorcolumn == ''
+    execute "set colorcolumn=" .. a:arg1
+  else
+    set colorcolumn=
+  endif
+endfunction
+
+nnoremap <leader>c :call Toggle_color_column(80)<CR>
 
 function! s:NewJournalEntry(name)
   if a:name == ""

@@ -1,16 +1,5 @@
 vim.cmd("source ~/.vimrc")
 
-ColorColumn = ""
-function ToggleColorColumn(col)
-  col = col or ColorColumn
-  if ColorColumn > "-1" then
-    ColorColumn = "-1"
-  else
-    ColorColumn = "80"
-  end
-  vim.opt.colorcolumn = col
-end
-
 function ColorScheme(clr)
   local color = clr or "github_dark_default"
   vim.cmd.colorscheme(color)
@@ -34,8 +23,6 @@ function PythonTraceback()
   vim.opt.errorformat = [[\ \ File\ \"%f\"\\\,\ line\ %l\\\,%m]]
 end
 
-ToggleColorColumn(ColorColumn)
-vim.keymap.set("n", "<leader>c", function() ToggleColorColumn() end)
 vim.keymap.set("n", "<leader>b", function() ToggleBackground() end)
 vim.keymap.set("n", "<leader>pt", function() PythonTraceback() end)
 
