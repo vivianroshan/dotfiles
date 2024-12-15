@@ -107,6 +107,33 @@ else
   nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
 endif
 
+command! -nargs=? Journal call s:NewJournalEntry('<f-args>')
+
+function! s:Quickfix_loclist_win_status()
+  let winid = win_getid()
+  let wininfo = getwininfo()
+  let l:quickfix = 0
+  let l:loclist = 0
+  for info in wininfo
+    let l:quickfix = l:quickfix || (info['quickfix'] && !info['loclist'])
+    let l:loclist = l:loclist || info['loclist']
+  endfor
+  return {'quickfix': l:quickfix, 'loclist': l:loclist}
+endfunction
+
+
+function! s:Toggle_quickfix_or_loclist(args1)
+  let info = Quickfix_loclist_win_status()
+  if (a:args1 == 'c' && info['quickfix'] == 0) || (a:args1 == 'l' && info['loclist'] == 0)
+    execute a:args1 .. 'open'
+  elseif (a:args1 == 'c' && info['quickfix'] == 1) || (a:args1 == 'l' && info['loclist'] == 1)
+    execute a:args1 .. 'close'
+  end
+endfunction
+
+nnoremap <leader>qf :call Toggle_quickfix_or_loclist('c')<CR>
+nnoremap <leader>ql :call Toggle_quickfix_or_loclist('l')<CR>
+
 function! s:NewJournalEntry(name)
   if a:name == ""
     let l:filename = strftime("%Y-%m-%d")
