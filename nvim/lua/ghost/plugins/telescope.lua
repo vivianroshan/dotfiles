@@ -18,7 +18,7 @@ local telescope = {
       desc = "find_files_hidden",
     },
     {
-      "<C-p>",
+      "<M-p>",
       function() require("telescope.builtin").git_files() end,
       mode = "n",
       desc = "git_files",
