@@ -106,3 +106,16 @@ if !has('nvim')
 else
   nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
 endif
+
+function! s:NewJournalEntry(name)
+  if a:name == ""
+    let l:filename = strftime("%Y-%m-%d")
+  else
+    let l:filename = a:name
+  endif
+  execute "edit " . "/Users/roshan/Developer/journal/" . l:filename . ".md"
+  normal G
+endfunction
+
+command! -nargs=? Journal call s:NewJournalEntry('<f-args>')
+
