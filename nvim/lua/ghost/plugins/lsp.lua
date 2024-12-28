@@ -26,7 +26,7 @@ local lsp = {
         "pyright",
         "rust_analyzer",
         "kotlin_language_server",
-        --"jdtls",
+        "jdtls",
       },
       handlers = {
         function(server_name)
@@ -52,8 +52,8 @@ local lsp = {
             showSuggestionsAsSnippets = true,
           })
         end,
-        ["jdtls"] = function()
-        end,
+        -- ["jdtls"] = function()
+        -- end,
       },
     })
     lspconfig.clangd.setup({
