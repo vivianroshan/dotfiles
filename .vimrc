@@ -1,7 +1,13 @@
 set nocompatible
 let mapleader=" "
 
-colorscheme habamax
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set background=dark
+colorscheme desert
+
 syntax on
 set number
 set relativenumber
@@ -91,6 +97,10 @@ if !has('nvim')
 
   "--editorconfig
   packadd editorconfig
+
+  "--colorscheme
+  set background=dark
+  colorscheme gruvbox
 
   "--grep
   nnoremap <leader><C-s> :silent grep -ir '' .<Left><Left><Left>
