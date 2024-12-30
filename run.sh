@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 script_dir=$(dirname "$(readlink -f "$0")")
-ln -s "$script_dir/nvim" ~/.config/
-ln -s "$script_dir/tmux" ~/.config/
-ln -s "$script_dir/.vimrc" ~/
+
+set -x
+ln -s "$script_dir/nvim"    ~/.config/
+ln -s "$script_dir/tmux"    ~/.config/
+ln -s "$script_dir/ghostty" ~/.config
+ln -s "$script_dir/.vimrc"  ~/
+set +x
 

@@ -1,0 +1,7 @@
+theme = GruvboxDark
+font-size = 17
+font-family = JetBrainsMonoNL Nerd Font Mono
+macos-non-native-fullscreen = true
+fullscreen = false
+keybind = global:super+s=toggle_quick_terminal
+quick-terminal-position=bottom
