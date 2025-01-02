@@ -25,8 +25,8 @@ set history=200
 set ruler
 set showcmd
 set wildmenu
-set ttimeout
-set ttimeoutlen=2000
+"--set ttimeout
+"--set ttimeoutlen=2000
 set display=truncate,uhex
 inoremap <C-U> <C-G>u<C-U>
 if has('reltime')
@@ -152,11 +152,11 @@ endfunction
 
 function! s:NewJournalEntry(name)
   if a:name == ""
-    let l:filename = strftime("%Y-%m-%d")
+    let l:filename = strftime("%Y-%m-%d") . ".md"
   else
-    let l:filename = a:name
+    let l:filename = strpart(a:name, 1, len(a:name) - 2)
   endif
-  execute "edit " . expand('~') . "/Developer/journal/" . l:filename . ".md"
+  execute "edit " . expand('~') . "/Developer/journal/" . l:filename
   normal G
 endfunction
 
