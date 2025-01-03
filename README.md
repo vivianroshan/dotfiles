@@ -35,3 +35,8 @@ cd dotfiles
 ./setup.sh
 ```
 
+### 5. install brew packages
+```bash
+brew bundle
+```
+
