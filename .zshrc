@@ -17,10 +17,10 @@ bindkey '^ ' autosuggest-accept
 eval "$(zoxide init zsh)"
 
 # HISTORY
-export HISTFILE=~/.zsh_history
-export HISTFILESIZE=1000000
-export HISTSIZE=100000
-export SAVEHIST=100000
+HISTFILE=~/.zsh_history
+HISTFILESIZE=1000000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
