@@ -1,0 +1,8 @@
+[user]
+  username = vivianroshan
+  email = 78131335+vivianroshan@users.noreply.github.com
+[init]
+  defaultBranch = main
+[core]
+  editor = nvim
+

@@ -13,8 +13,8 @@ zstyle ':vcs_info:git:*' formats '%F{5}(%F{1}%b%F{5})%f'
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
-# ZOXIDE
-eval "$(zoxide init zsh)"
+# Z
+ . /opt/homebrew/etc/profile.d/z.sh
 
 # HISTORY
 HISTFILE=~/.zsh_history
