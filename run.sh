@@ -6,5 +6,6 @@ ln -s "$script_dir/nvim"    ~/.config/
 ln -s "$script_dir/tmux"    ~/.config/
 ln -s "$script_dir/ghostty" ~/.config
 ln -s "$script_dir/.vimrc"  ~/
+ln -s "$script_dir/.zshrc"  ~/
 set +x
 
