@@ -1,3 +1,10 @@
+# Z
+ . /opt/homebrew/etc/profile.d/z.sh
+
+# AUTOSUGGESTIONS
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
+
 # completions
 autoload -Uz compinit && compinit
 
@@ -9,12 +16,21 @@ setopt prompt_subst
 PROMPT='%F{2}%1~ ${vcs_info_msg_0_}%F{4} %# %f'
 zstyle ':vcs_info:git:*' formats '%F{5}(%F{1}%b%F{5})%f'
 
-# AUTOSUGGESTIONS
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^ ' autosuggest-accept
+# LS_COLORS
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+alias ls='ls -G'
 
-# Z
- . /opt/homebrew/etc/profile.d/z.sh
+# GNU LS COLORS
+if [[ -z "$LS_COLORS" ]] \
+  && (( $+commands[dircolors] )) \
+  && [[ -f "$HOME/.dircolors" ]]; then
+    source <(dircolors -b "$HOME/.dircolors") || source <(dircolors -b)
+else
+  export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+fi
+if (( $+commands[gls] )); then
+    alias ls='gls --color=tty'
+fi
 
 # HISTORY
 HISTFILE=~/.zsh_history

@@ -162,20 +162,24 @@ endfunction
 
 command! -nargs=? Journal call s:NewJournalEntry('<f-args>')
 
-"--keymaps
+"--project search
 nnoremap <leader>pv :Ex<CR>
 nnoremap <leader><C-p> :find ./**/**<Left>
 nnoremap <C-s> :vim//g ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+"--grep see has('nvim') block
 
+"--quickfix
 nnoremap <C-j> :cnext<CR>zz
 nnoremap <C-k> :cprev<CR>zz
 nnoremap <leader>j :lnext<CR>zz
 nnoremap <leader>k :lprev<CR>zz
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
+"--source and chmod
 nnoremap <leader>x :source %<CR>
 nnoremap <leader><C-x> :!chmod +x %<cr>
 
+"--line move
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
