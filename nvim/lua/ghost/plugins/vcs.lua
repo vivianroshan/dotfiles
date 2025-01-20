@@ -1,5 +1,7 @@
 local undotree = {
   'mbbill/undotree',
+  lazy = false,
+  priority = 1000,
   keys = {
     { '<leader>u', function() vim.cmd.UndotreeToggle(); end, mode = 'n' },
   },

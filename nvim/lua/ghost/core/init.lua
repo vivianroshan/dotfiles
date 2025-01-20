@@ -25,5 +25,3 @@ end
 
 vim.keymap.set("n", "<leader>b", function() ToggleBackground() end)
 vim.keymap.set("n", "<leader>pt", function() PythonTraceback() end)
-
-require("ghost.core.icons")

@@ -45,6 +45,7 @@ set nofoldenable
 "--undotree setup
 let g:undotree_WindowLayout = 3
 
+"-- restore cursor position
 augroup vimStartup
   autocmd!
   autocmd BufReadPost *
@@ -76,7 +77,6 @@ if !has('nvim')
       call mkdir($HOME."/.vim/directory", "", 0700)
   endif
   set undodir=$HOME/.vim/undodir/
-  set undofile
   set backupdir=$HOME/.vim/backupdir/
   set directory=$HOME/.vim/swapdir/
 
@@ -108,6 +108,8 @@ else
   "--rg
   nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
 endif
+
+set undofile
 
 "--custom functions
 function! GetGitDiffSummary()
