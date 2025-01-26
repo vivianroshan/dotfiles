@@ -1,3 +1,21 @@
+function GetQueryDriver()
+  local queryDriver = {
+    "/opt/homebrew/bin/gcc-14",
+    "/opt/homebrew/bin/g++-14",
+    "/opt/homebrew/bin/riscv64-unknown-elf-gcc",
+    "/opt/homebrew/bin/riscv64-unknown-elf-g++",
+  }
+  local queryDriverStr = '--query-driver="'
+  for i, v in ipairs(queryDriver) do
+    queryDriverStr = queryDriverStr .. v
+    if i < #queryDriver then
+      queryDriverStr = queryDriverStr .. ","
+    end
+  end
+  queryDriverStr = queryDriverStr .. '"'
+  return queryDriverStr
+end
+
 local lsp = {
   "williamboman/mason-lspconfig.nvim",
   event = { "BufReadPost", "InsertEnter" },
@@ -58,6 +76,7 @@ local lsp = {
     })
     lspconfig.clangd.setup({
       capabilities = capabilities,
+      cmd = {'clangd', GetQueryDriver()},
     })
 
     -- Global mappings.

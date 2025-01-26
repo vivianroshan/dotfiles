@@ -38,6 +38,13 @@ HISTFILESIZE=1000000
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Share history across all sessions
+#setopt SHARE_HISTORY        # Share history between sessions
+setopt INC_APPEND_HISTORY   # Immediately append commands to history file
+setopt HIST_IGNORE_SPACE    # Ignore commands starting with space
+setopt HIST_REDUCE_BLANKS   # Remove extra blanks in commands
+setopt HIST_IGNORE_DUPS     # Ignore duplicate entries
+
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
 
