@@ -70,13 +70,13 @@ local lsp = {
             showSuggestionsAsSnippets = true,
           })
         end,
-        -- ["jdtls"] = function()
-        -- end,
+        ["clangd"] = function()
+          lspconfig.clangd.setup({
+            capabilities = capabilities,
+            cmd = {'clangd', GetQueryDriver()},
+          })
+        end,
       },
-    })
-    lspconfig.clangd.setup({
-      capabilities = capabilities,
-      cmd = {'clangd', GetQueryDriver()},
     })
 
     -- Global mappings.
