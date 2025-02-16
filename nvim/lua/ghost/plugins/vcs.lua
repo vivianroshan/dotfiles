@@ -1,7 +1,6 @@
 local undotree = {
   'mbbill/undotree',
-  lazy = false,
-  priority = 1000,
+  event = { "VeryLazy"},
   keys = {
     { '<leader>u', function() vim.cmd.UndotreeToggle(); end, mode = 'n' },
   },
@@ -12,6 +11,7 @@ local gitgutter = {
 }
 local vim_fugitive = {
   'tpope/vim-fugitive',
+  event = { "VeryLazy"},
   keys = {
     { '<leader>gs', function() vim.cmd.Git(); end, mode = 'n' },
   },

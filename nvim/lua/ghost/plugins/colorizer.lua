@@ -34,6 +34,8 @@ local colorizer = {
 
 local rainbow_csv = {
   "mechatroner/rainbow_csv",
+  event = { "VeryLazy" },
+  --ft = {"csv", "log"},
 }
 
 return { colorizer, rainbow_csv }

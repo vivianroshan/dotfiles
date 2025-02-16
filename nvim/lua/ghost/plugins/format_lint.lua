@@ -14,11 +14,11 @@ local conform = {
   opts = {
     formatters_by_ft = {
       python = { "autopep8" },
-      javascript = { { "prettierd", "prettier" } },
+      javascript = { "prettierd", "prettier", stop_after_first = true },
       tex = { "latexindent" },
       lua = { "stylua" },
-      json = { { "prettierd", "prettier" } },
-      markdown = { { "prettierd", "prettier" } },
+      json = { "prettierd", "prettier", stop_after_first = true },
+      markdown = { "prettierd", "prettier", stop_after_first = true },
       --java = { "google-java-format" },
       bash = { "shfmt" },
       sh = { "shfmt" },
@@ -27,33 +27,24 @@ local conform = {
 }
 local nvim_lint = {
   "mfussenegger/nvim-lint",
-  event = {
-    "BufReadPre",
-    "BufNewFile",
+  keys = { 
+    {
+      "<leader>l",
+      function()
+        require("lint").try_lint()
+      end,
+      mode = "n",
+      desc = "Lint buffer",
+    },
   },
   config = function()
-    local lint = require("lint")
-
-    lint.linters_by_ft = {
+    require("lint").linters_by_ft = {
       javascript = { "eslint" },
       typescript = { "eslint" },
       javascriptreact = { "eslint" },
       typescriptreact = { "eslint" },
       python = { "pylint" },
     }
-
-    --		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-    --
-    --		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    --			group = lint_augroup,
-    --			callback = function()
-    --				lint.try_lint()
-    --			end,
-    --		})
-
-    vim.keymap.set("n", "<leader>l", function()
-      lint.try_lint()
-    end, { desc = "Trigger linting for current file" })
   end,
 }
 

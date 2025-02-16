@@ -33,6 +33,7 @@ local lsp = {
     local lspconfig = require("lspconfig")
     require("mason-lspconfig").setup({
       ensure_installed = {
+        "clangd",
         "lua_ls",
         "bashls",
         "grammarly",
@@ -75,6 +76,8 @@ local lsp = {
             capabilities = capabilities,
             cmd = {'clangd', GetQueryDriver()},
           })
+        end,
+        ["jdtls"] = function()
         end,
       },
     })

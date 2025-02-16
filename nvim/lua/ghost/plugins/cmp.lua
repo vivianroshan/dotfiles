@@ -9,9 +9,17 @@ local cmp = {
     "neovim/nvim-lspconfig",
 
     "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-    "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
+    {
+      "L3MON4D3/LuaSnip",
+      config = function ()
+        local ls = require("luasnip")
+        vim.keymap.set({"i", "s"}, "<C-l>", function() ls.jump(1) end, {silent = true})
+        vim.keymap.set({"i", "s"}, "<M-C-l>", function() ls.jump(-1) end, {silent = true})
+      end,
+    },
   },
+  event = "InsertEnter",
   config = function()
     require("luasnip.loaders.from_vscode").lazy_load()
     local cmp = require("cmp")
@@ -42,22 +50,22 @@ local cmp = {
     })
 
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" },
-      },
-    })
+--    cmp.setup.cmdline({ "/", "?" }, {
+--      mapping = cmp.mapping.preset.cmdline(),
+--      sources = {
+--        { name = "buffer" },
+--      },
+--    })
 
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-    })
+--    cmp.setup.cmdline(":", {
+--      mapping = cmp.mapping.preset.cmdline(),
+--      sources = cmp.config.sources({
+--        { name = "path" },
+--      }, {
+--        { name = "cmdline" },
+--      }),
+--    })
   end,
 }
 

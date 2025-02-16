@@ -25,6 +25,8 @@ set history=200
 set ruler
 set showcmd
 set wildmenu
+set wildmode=longest:full,full
+set wildoptions=fuzzy,pum,tagfile
 "--set ttimeout
 "--set ttimeoutlen=2000
 set display=truncate,uhex
@@ -178,8 +180,17 @@ nnoremap <leader>j :lnext<CR>zz
 nnoremap <leader>k :lprev<CR>zz
 
 "--source and chmod
-nnoremap <leader>x :source %<CR>
+nnoremap <leader><M-s> :source %<CR>
 nnoremap <leader><C-x> :!chmod +x %<cr>
+
+nnoremap <leader>x gv"zy'<"zP`>
+vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!sh<CR>
+vnoremap <leader>c :.!jq .<CR>
+vnoremap <leader>v :.!jq -c .<CR>
+vnoremap <leader>j <ESC>'<O```json<ESC>'>o```<ESC>
+vnoremap <leader>m :.!sh ~/Developer/tools/scripts/f_md.sh 
+nnoremap <M-h> 5zh
+nnoremap <M-l> 5zl
 
 "--line move
 vnoremap J :m '>+1<CR>gv=gv
@@ -213,4 +224,10 @@ nnoremap <leader>c :call Toggle_color_column(80)<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>gs :Git<CR>
+
+"--git mergetool"
+let maplocalleader="\\"
+nnoremap <localleader>o :diffget LOCAL<CR>
+nnoremap <localleader>b :diffget BASE<CR>
+nnoremap <localleader>t :diffget REMOTE<CR>
 
