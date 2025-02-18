@@ -181,13 +181,15 @@ nnoremap <leader>k :lprev<CR>zz
 
 "--source and chmod
 nnoremap <leader><M-s> :source %<CR>
-nnoremap <leader><C-x> :!chmod +x %<cr>
+nnoremap <leader><C-x> :!chmod +x %<CR>
 
+nnoremap <leader>we <CMD>w<CR><CMD>e<CR>
+nnoremap <leader>rr <CMD>e<CR>
+nnoremap <leader>re <CMD>e!<CR>
 nnoremap <leader>x gv"zy'<"zP`>
 vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!sh<CR>
 vnoremap <leader>c :.!jq .<CR>
 vnoremap <leader>v :.!jq -c .<CR>
-vnoremap <leader>j <ESC>'<O```json<ESC>'>o```<ESC>
 vnoremap <leader>m :.!sh ~/Developer/tools/scripts/f_md.sh 
 nnoremap <M-h> 5zh
 nnoremap <M-l> 5zl

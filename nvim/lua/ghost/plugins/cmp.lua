@@ -9,7 +9,8 @@ local cmp = {
     "neovim/nvim-lspconfig",
 
     "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-    "rafamadriz/friendly-snippets",
+    --"rafamadriz/friendly-snippets",
+    "honza/vim-snippets",
     {
       "L3MON4D3/LuaSnip",
       config = function ()
@@ -21,7 +22,8 @@ local cmp = {
   },
   event = "InsertEnter",
   config = function()
-    require("luasnip.loaders.from_vscode").lazy_load()
+    --require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_snipmate").lazy_load()
     local cmp = require("cmp")
     cmp.setup({
       snippet = {
