@@ -1,4 +1,5 @@
-theme = GruvboxDark
+#theme = GruvboxDark
+theme = carbonfox
 font-size = 17
 font-family = JetBrainsMonoNL Nerd Font Mono
 macos-non-native-fullscreen = true

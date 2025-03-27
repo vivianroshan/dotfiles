@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+print(lazypath)
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -13,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
   spec = {
-    { import = "ghost.plugins" },
-    { "folke/which-key.nvim", event = { "VeryLazy" } }
+    { import = "plugins" },
+    --{ "folke/which-key.nvim", event = { "VeryLazy" } }
   },
 })

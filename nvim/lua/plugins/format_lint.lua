@@ -15,6 +15,7 @@ local conform = {
     formatters_by_ft = {
       python = { "autopep8" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
       tex = { "latexindent" },
       lua = { "stylua" },
       json = { "prettierd", "prettier", stop_after_first = true },

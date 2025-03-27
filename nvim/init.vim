@@ -5,9 +5,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set background=dark
-colorscheme desert
-
 syntax on
 set number
 set relativenumber
@@ -101,6 +98,7 @@ if !has('nvim')
   packadd editorconfig
 
   "--colorscheme
+  "--colorscheme desert
   set background=dark
   colorscheme gruvbox
 
@@ -164,6 +162,23 @@ function! s:NewJournalEntry(name)
   normal G
 endfunction
 
+"--harpoon
+function! s:refreshSpecialMarks()
+  let s:specialMarks = [ 'H', 'J', 'K', 'L' ]
+  for mark in s:specialMarks
+    let mark_pos = getpos("'" . mark)
+    if mark_pos[0] == bufnr()
+      call setpos("'" . mark, getpos('.'))
+    endif
+  endfor
+endfunction
+
+augroup Harpoon
+  autocmd!
+  autocmd BufLeave * call s:refreshSpecialMarks()
+augroup END
+
+"--journal
 command! -nargs=? Journal call s:NewJournalEntry('<f-args>')
 
 "--project search
@@ -187,7 +202,7 @@ nnoremap <leader>we <CMD>w<CR><CMD>e<CR>
 nnoremap <leader>rr <CMD>e<CR>
 nnoremap <leader>re <CMD>e!<CR>
 nnoremap <leader>x gv"zy'<"zP`>
-vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!sh<CR>
+vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!bash<CR>
 vnoremap <leader>c :.!jq .<CR>
 vnoremap <leader>v :.!jq -c .<CR>
 vnoremap <leader>m :.!sh ~/Developer/tools/scripts/f_md.sh 
@@ -233,3 +248,6 @@ nnoremap <localleader>o :diffget LOCAL<CR>
 nnoremap <localleader>b :diffget BASE<CR>
 nnoremap <localleader>t :diffget REMOTE<CR>
 
+if has('nvim')
+  lua dofile(vim.fn.stdpath('config') .. '/init_lazy.lua')
+endif

@@ -36,7 +36,7 @@ Icons = {
   },
 }
 
-return {
+local dap = {
   {
     "mfussenegger/nvim-dap",
     recommended = true,
@@ -158,3 +158,6 @@ return {
     config = function() end,
   },
 }
+
+--return { dap }
+return {}

@@ -3,7 +3,7 @@ local colorizer = {
   event = { "BufReadPre" },
   config = function()
     require("colorizer").setup({
-      filetypes = { "css", "jsx", "js", "html", "lua" },
+      filetypes = { "css", "jsx", "js", "html" },
       user_default_options = {
         RGB = true,          -- #RGB hex codes
         RRGGBB = true,       -- #RRGGBB hex codes
@@ -34,8 +34,8 @@ local colorizer = {
 
 local rainbow_csv = {
   "mechatroner/rainbow_csv",
-  event = { "VeryLazy" },
-  --ft = {"csv", "log"},
+  --event = { "VeryLazy" },
+  ft = {"csv", "log"},
 }
 
 return { colorizer, rainbow_csv }
