@@ -194,6 +194,13 @@ nnoremap <C-k> :cprev<CR>zz
 nnoremap <leader>j :lnext<CR>zz
 nnoremap <leader>k :lprev<CR>zz
 
+"--mark harpoon
+nnoremap <M-h> `H
+nnoremap <M-j> `J
+nnoremap <M-k> `K
+nnoremap <M-l> `L
+nnoremap <M-;> `H
+
 "--source and chmod
 nnoremap <leader><M-s> :source %<CR>
 nnoremap <leader><C-x> :!chmod +x %<CR>
@@ -206,8 +213,8 @@ vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!bash<CR>
 vnoremap <leader>c :.!jq .<CR>
 vnoremap <leader>v :.!jq -c .<CR>
 vnoremap <leader>m :.!sh ~/Developer/tools/scripts/f_md.sh 
-nnoremap <M-h> 5zh
-nnoremap <M-l> 5zl
+nnoremap <M-S-h> 5zh
+nnoremap <M-S-l> 5zl
 
 "--line move
 vnoremap J :m '>+1<CR>gv=gv

@@ -77,8 +77,6 @@ local lsp = {
             cmd = {'clangd', GetQueryDriver()},
           })
         end,
-        ["jdtls"] = function()
-        end,
       },
     })
 

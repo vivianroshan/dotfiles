@@ -74,3 +74,5 @@ eval "$(pyenv init - zsh)"
 # DOTNET telemetry off
 DOTNET_CLI_TELEMETRY_OPTOUT="true"
 
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
