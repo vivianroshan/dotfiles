@@ -1,10 +1,6 @@
 set nocompatible
 let mapleader=" "
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-
 syntax on
 set number
 set relativenumber
@@ -24,10 +20,17 @@ set showcmd
 set wildmenu
 set wildmode=longest:full,full
 set wildoptions=fuzzy,pum,tagfile
-"--set ttimeout
-"--set ttimeoutlen=2000
-set display=truncate,uhex
+
+"--keypress wait time
+"set ttimeout
+"set ttimeoutlen=2000
+
+"set display=truncate,uhex
+
 inoremap <C-U> <C-G>u<C-U>
+if (has("termguicolors"))
+  set termguicolors
+endif
 if has('reltime')
   set incsearch
 endif
@@ -60,36 +63,35 @@ if !exists(":DiffOrig")
     \ | wincmd p | diffthis
 endif
 
-if !has('nvim')
+"--statusline
+augroup UpdateDiffSummary
+  autocmd!
+  autocmd BufReadPost * let b:git_diff_summary = GetGitDiffSummary()
+  autocmd BufWritePost * let b:git_diff_summary = GetGitDiffSummary()
+augroup END
+set statusline=
+set statusline+=\ %{get(b:,'git_diff_summary')}
+set statusline+=\ %<%f
+set statusline+=\ %h%m%r
+set statusline+=%=%-14.(%y\ %l,%c%V%)\ %P
 
+if !has('nvim')
   "--directory setup
   if !isdirectory($HOME."/.vim")
-      call mkdir($HOME."/.vim", "", 0770)
+    call mkdir($HOME."/.vim", "", 0770)
   endif
   if !isdirectory($HOME."/.vim/undodir")
-      call mkdir($HOME."/.vim/undodir", "", 0700)
+    call mkdir($HOME."/.vim/undodir", "", 0700)
   endif
   if !isdirectory($HOME."/.vim/backupdir")
-      call mkdir($HOME."/.vim/backupdir", "", 0700)
+    call mkdir($HOME."/.vim/backupdir", "", 0700)
   endif
   if !isdirectory($HOME."/.vim/directory")
-      call mkdir($HOME."/.vim/directory", "", 0700)
+    call mkdir($HOME."/.vim/directory", "", 0700)
   endif
   set undodir=$HOME/.vim/undodir/
   set backupdir=$HOME/.vim/backupdir/
   set directory=$HOME/.vim/swapdir/
-
-  "--statusline
-  augroup UpdateDiffSummary
-    autocmd!
-    autocmd BufReadPost * let b:git_diff_summary = GetGitDiffSummary()
-    autocmd BufWritePost * let b:git_diff_summary = GetGitDiffSummary()
-  augroup END
-  set statusline=
-  set statusline+=\ %{get(b:,'git_diff_summary')}
-  set statusline+=\ %<%f
-  set statusline+=\ %h%m%r
-  set statusline+=%=%-14.(%y\ %l,%c%V%)\ %P
 
   "--fzf
   set rtp+=/opt/homebrew/opt/fzf
@@ -98,9 +100,8 @@ if !has('nvim')
   packadd editorconfig
 
   "--colorscheme
-  "--colorscheme desert
+  colorscheme slate
   set background=dark
-  colorscheme gruvbox
 
   "--grep
   nnoremap <leader><C-s> :silent grep -ir '' .<Left><Left><Left>
@@ -199,7 +200,6 @@ nnoremap <M-h> `H
 nnoremap <M-j> `J
 nnoremap <M-k> `K
 nnoremap <M-l> `L
-nnoremap <M-;> `H
 
 "--source and chmod
 nnoremap <leader><M-s> :source %<CR>
@@ -210,9 +210,13 @@ nnoremap <leader>rr <CMD>e<CR>
 nnoremap <leader>re <CMD>e!<CR>
 nnoremap <leader>x gv"zy'<"zP`>
 vnoremap <leader>x <ESC>gv"zy'<"zPgv:.!bash<CR>
+
+"--json jq
 vnoremap <leader>c :.!jq .<CR>
 vnoremap <leader>v :.!jq -c .<CR>
 vnoremap <leader>m :.!sh ~/Developer/tools/scripts/f_md.sh 
+
+"--horizontal scroll
 nnoremap <M-S-h> 5zh
 nnoremap <M-S-l> 5zl
 
