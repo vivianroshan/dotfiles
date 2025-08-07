@@ -10,7 +10,7 @@ local telescope = {
     { "<M-p>", function() require("telescope.builtin").git_files() end, mode = "n", desc = "git_files", },
     { "<leader>ps", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end, mode = "n", desc = "grep_string", },
     { "<leader>pl", function() require("telescope.builtin").live_grep() end, mode = "n", desc = "live_grep", },
-    { "<leader>ph", function() require("telescope.builtin").help_tags() end, mode = "n", desc = "help_tags", },
+    { "<leader>pht", function() require("telescope.builtin").help_tags() end, mode = "n", desc = "help_tags", },
     { "<leader>pw", function() require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") }) end, mode = "n", desc = "grep_string", },
     { "<leader>pW", function() require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") }) end, mode = "n", desc = "grep_string", },
     { "<leader>pb", function() require("telescope.builtin").buffers() end, mode = "n", desc = "buffers", },

@@ -13,7 +13,7 @@ local conform = {
   },
   opts = {
     formatters_by_ft = {
-      python = { "autopep8" },
+      python = { "isort", "black" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
       tex = { "latexindent" },
@@ -28,7 +28,7 @@ local conform = {
 }
 local nvim_lint = {
   "mfussenegger/nvim-lint",
-  keys = { 
+  keys = {
     {
       "<leader>l",
       function()
@@ -44,7 +44,7 @@ local nvim_lint = {
       typescript = { "eslint" },
       javascriptreact = { "eslint" },
       typescriptreact = { "eslint" },
-      python = { "pylint" },
+      python = { "flake8" },
     }
   end,
 }

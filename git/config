@@ -1,11 +1,11 @@
 [user]
   username = vivianroshan
   email = 78131335+vivianroshan@users.noreply.github.com
+  name = vivianroshan
 [init]
   defaultBranch = main
 [core]
   editor = nvim
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
