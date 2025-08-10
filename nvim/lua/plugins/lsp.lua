@@ -24,10 +24,8 @@ local lsp = {
     { "williamboman/mason.nvim", build = ":MasonUpdate" },
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-    "j-hui/fidget.nvim",
   },
   config = function()
-    require("fidget").setup()
     require("mason").setup()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lspconfig = require("lspconfig")
@@ -59,9 +57,21 @@ local lsp = {
             },
           })
         end,
+        ["lua_ls"] = function()
+          vim.lsp.config.lua_ls({
+            settings = {
+              Lua = {
+                workspace = {
+                  library = vim.api.nvim_get_runtime_file("", true),
+                }
+              }
+            }
+          })
+        end,
         ["grammarly"] = function()
           lspconfig.grammarly.setup({
             --filetypes = { "markdown", "text", "tex" },
+            capabilities = capabilities,
             filetypes = { "text", "tex" },
           })
         end,
@@ -123,4 +133,12 @@ local lsp = {
   end,
 }
 
-return lsp
+local fidget = {
+  "j-hui/fidget.nvim",
+  opts = {
+    -- Options
+  },
+}
+
+return { lsp, fidget }
+--return {}

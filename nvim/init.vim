@@ -259,6 +259,24 @@ nnoremap <localleader>o :diffget LOCAL<CR>
 nnoremap <localleader>b :diffget BASE<CR>
 nnoremap <localleader>t :diffget REMOTE<CR>
 
+let uname = substitute(system('uname -s'), '\n', '', '')
+let is_linux = (uname == 'Linux')
+let is_wsl = (is_linux && readfile('/proc/version')[0] =~ 'WSL')
+if is_wsl == 1
+    let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \      '+': 'clip.exe',
+      \      '*': 'clip.exe',
+      \    },
+      \   'paste': {
+      \      '+': 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \      '*': 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
+endif
+
 if has('nvim')
   lua dofile(vim.fn.stdpath('config') .. '/init_lazy.lua')
 endif

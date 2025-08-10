@@ -16,11 +16,5 @@ local vim_fugitive = {
     { '<leader>gs', function() vim.cmd.Git(); end, mode = 'n' },
   },
 }
-local todo_comments = {
-  "folke/todo-comments.nvim",
-  dependency = { 'nvim-lua/plenary.nvim' },
-  event = { "BufReadPost" },
-  opts = {},
-}
 
 return { undotree, gitgutter, vim_fugitive, todo_comments }

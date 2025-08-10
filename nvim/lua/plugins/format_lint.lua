@@ -13,16 +13,18 @@ local conform = {
   },
   opts = {
     formatters_by_ft = {
+      lua = { "stylua" },
       python = { "isort", "black" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
+      typescript = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
-      tex = { "latexindent" },
-      lua = { "stylua" },
+      css = { "prettierd", "prettier", stop_after_first = true },
       json = { "prettierd", "prettier", stop_after_first = true },
       markdown = { "prettierd", "prettier", stop_after_first = true },
-      --java = { "google-java-format" },
+      tex = { "latexindent" },
       bash = { "shfmt" },
       sh = { "shfmt" },
+      --java = { "google-java-format" },
     },
   },
 }
@@ -40,11 +42,11 @@ local nvim_lint = {
   },
   config = function()
     require("lint").linters_by_ft = {
+      python = { "flake8" },
       javascript = { "eslint" },
       typescript = { "eslint" },
       javascriptreact = { "eslint" },
       typescriptreact = { "eslint" },
-      python = { "flake8" },
     }
   end,
 }
