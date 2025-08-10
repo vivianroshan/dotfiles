@@ -1,20 +1,44 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-print(lazypath)
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
-return require("lazy").setup({
+require("lazy").setup({
 	spec = {
+		{ "mason-org/mason.nvim", opts = {} },
+		{ "neovim/nvim-lspconfig" },
 		{ import = "plugins" },
-		--{ "folke/which-key.nvim", event = { "VeryLazy" } }
+		{ "folke/which-key.nvim", event = { "VeryLazy" } },
+		{ "j-hui/fidget.nvim", opts = {} },
+	},
+	install = { colorscheme = { "habamax" } },
+	checker = { enabled = true },
+})
+
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("bashls")
+vim.lsp.enable("pyright")
+vim.lsp.enable({ "ts_ls", "html", "cssls", "tailwindcss" })
+vim.lsp.enable("grammarly")
+-- "gopls", "clangd", "rust_analyzer"
+--  "jdtls"
+
+vim.lsp.config("*", {
+	inlay_hints = {
+		enabled = true,
+		-- show_type_hints = false,
+		-- show_parameter_hints = false,
+		-- show_parameter_name_hints = false,
 	},
 })
