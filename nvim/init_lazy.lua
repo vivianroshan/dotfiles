@@ -16,11 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
+		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 		{ "mason-org/mason.nvim", opts = {} },
 		{ "neovim/nvim-lspconfig" },
+		{ "j-hui/fidget.nvim", opts = {} },
 		{ import = "plugins" },
 		{ "folke/which-key.nvim", event = { "VeryLazy" } },
-		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	install = { colorscheme = { "habamax" } },
 	checker = { enabled = true },
@@ -42,3 +43,5 @@ vim.lsp.config("*", {
 		-- show_parameter_name_hints = false,
 	},
 })
+
+vim.cmd([[colorscheme habamax]])
