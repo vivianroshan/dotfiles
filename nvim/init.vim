@@ -100,8 +100,11 @@ if !has('nvim')
   packadd editorconfig
 
   "--colorscheme
-  colorscheme slate
-  set background=dark
+  if !empty(globpath(&rtp, 'colors/habamax.vim'))
+    colorscheme habamax
+  else
+    colorscheme slate
+  endif
 
   "--grep
   nnoremap <leader><C-s> :silent grep -ir '' .<Left><Left><Left>

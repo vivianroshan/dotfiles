@@ -31,7 +31,6 @@ local telescope = {
 				--preview_width = 0.25,
 			},
 			--borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-			borderchars = { "─", " ", "─", " ", "╭", "╮", "╯", "╰" },
 			winblend = 3,
 		},
 	},

@@ -21,7 +21,31 @@ require("lazy").setup({
 		{ "neovim/nvim-lspconfig" },
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ import = "plugins" },
-		{ "folke/which-key.nvim", event = { "VeryLazy" } },
+		{
+			"catppuccin/nvim",
+			lazy = false,
+			priority = 1000,
+			config = function()
+				require("catppuccin").setup({
+					integrations = {
+						gitgutter = true,
+						treesitter = true,
+						telescope = true,
+					},
+				})
+				--vim.cmd([[colorscheme catppuccin]])
+			end,
+		},
+		{
+			"folke/tokyonight.nvim",
+			lazy = false,
+			priority = 1000,
+			config = function()
+				require("tokyonight").setup({})
+				--vim.cmd([[colorscheme tokyonight]])
+			end,
+		},
+		-- { "folke/which-key.nvim", event = { "VeryLazy" } },
 	},
 	install = { colorscheme = { "habamax" } },
 	checker = { enabled = true },
@@ -44,4 +68,5 @@ vim.lsp.config("*", {
 	},
 })
 
+vim.cmd([[set completeopt+=menuone,noselect,popup]])
 vim.cmd([[colorscheme habamax]])
