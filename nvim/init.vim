@@ -111,6 +111,7 @@ if !has('nvim')
 else
   "--rg
   nnoremap <leader><C-s> :silent grep -i '' .<Left><Left><Left>
+  set signcolumn=auto:2
 endif
 
 set undofile
