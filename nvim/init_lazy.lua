@@ -46,6 +46,10 @@ require("lazy").setup({
 				--vim.cmd([[colorscheme tokyonight]])
 			end,
 		},
+		{
+			"rose-pine/neovim",
+			name = "rose-pine",
+		},
 		-- { "folke/which-key.nvim", event = { "VeryLazy" } },
 	},
 	install = { colorscheme = { "habamax" } },
@@ -70,4 +74,4 @@ vim.lsp.config("*", {
 })
 
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
-vim.cmd([[colorscheme habamax]])
+vim.cmd([[colorscheme tokyonight]])
