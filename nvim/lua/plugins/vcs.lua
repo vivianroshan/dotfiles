@@ -29,4 +29,20 @@ local vim_fugitive = {
 	},
 }
 
-return { undotree, gitgutter, vim_fugitive, todo_comments }
+local gitlinker = {
+	"linrongbin16/gitlinker.nvim",
+	cmd = "GitLink",
+	opts = {},
+	keys = {
+		{ "<leader>gl", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+		{ "<leader>gL", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+		{ "<leader>gb", "<cmd>GitLink blame<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+		{ "<leader>gB", "<cmd>GitLink! blame<cr>", mode = { "n", "v" }, desc = "Open git link" },
+		{ "<leader>gc", "<cmd>GitLink current_branch<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+		{ "<leader>gC", "<cmd>GitLink! current_branch<cr>", mode = { "n", "v" }, desc = "Open git link" },
+		{ "<leader>gd", "<cmd>GitLink default_branch<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+		{ "<leader>gD", "<cmd>GitLink! default_branch<cr>", mode = { "n", "v" }, desc = "Open git link" },
+	},
+}
+
+return { undotree, gitgutter, vim_fugitive, gitlinker }

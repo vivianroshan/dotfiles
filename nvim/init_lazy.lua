@@ -31,7 +31,7 @@ require("lazy").setup({
 						gitgutter = true,
 						treesitter = true,
 						telescope = true,
-            fzf = true,
+						fzf = true,
 					},
 				})
 				--vim.cmd([[colorscheme catppuccin]])
