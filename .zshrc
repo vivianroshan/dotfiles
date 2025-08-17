@@ -57,6 +57,7 @@ if [ -z "$TMUX" ] && [ "$TMUX_AUTO" = "true" ]; then tmux new -A -s default; fi
 
 # FZF
 source $(brew --prefix)/Cellar/fzf/*/shell/key-bindings.zsh
+source $(brew --prefix)/Cellar/fzf/*/shell/completion.zsh
 
 # RISC-V toolchain
 export PATH="$(brew --prefix)Cellar/riscv-gnu-toolchain/main/bin:$PATH"
