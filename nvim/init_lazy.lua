@@ -71,6 +71,7 @@ vim.lsp.config("*", {
 		-- show_parameter_hints = false,
 		-- show_parameter_name_hints = false,
 	},
+  checker=false,
 })
 
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
